@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Display Colors from Hex Codes</title>
+	<style>
+		.color {
+			display: inline-block;
+			width: 100px;
+			height: 100px;
+		}
+	</style>
+</head>
+<body style="display: flex; flex-direction: column; justify-content: center; text-align: center; align-items: center;">
+	<label for="input-colors">Enter hex color codes:</label><br>
+	<textarea id="input-colors" rows="5" cols="50" style="width:35%"></textarea><br>
+	<button onclick="displayColors()">Display Colors</button><br><br>
+	<div id="color-container"></div>
+	<script>
+		function displayColors() {
+			var inputColors = document.getElementById("input-colors").value;
+			var colorPalettes = JSON.parse(inputColors);
+            console.log(colorPalette)
+			var colorContainer = document.getElementById("color-container");
+			colorContainer.innerHTML = "";
+			for (var i = 0; i < colorPalettes.length; i++) {
+				var colorPalette = colorPalettes[i];
+				var paletteContainer = document.createElement("div");
+				for (var j = 0; j < colorPalette.length; j++) {
+					var color = colorPalette[j];
+					var colorDiv = document.createElement("div");
+					colorDiv.style.backgroundColor = "#" + color;
+					colorDiv.className = "color";
+					paletteContainer.appendChild(colorDiv);
+				}
+				colorContainer.appendChild(paletteContainer);
+			}
+		}
+	</script>
+</body>
+</html>
+
+[["d1750a", "660000", "990033", "5f021f", "8c001a"], ["f7b467", "660000", "990033", "5f021f", "8c001a"], ["a35b08", "0e0004", "31081f", "b91372", "fa198b"], ["9b5607", "0e0004", "31081f", "b91372", "fa198b"], ["a35b08", "390099", "9e0059", "ff0054", "ffbd00"], ["c26c09", "210f04", "452103", "690500", "bd2d87"], ["f6b05f", "e9190f", "ff0f80", "141204", "262a10"], ["3e2203", "f40000", "f44e3f", "f4796b", "f4998d"], ["f9c78e", "dd4b1a", "ef271b", "ea1744", "4b3b47"], ["f6ac58", "c75146", "ad2e24", "81171b", "540804"]]
